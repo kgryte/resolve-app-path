@@ -105,7 +105,7 @@ This module attempts the following strategies for resolving an application path:
 	where, in `app/root/index.js`,
 
 	``` javascript
-	var root = require( './../../resolve-app-root' );
+	var root = require( './../../resolve-app-path' );
 	```
 
 	and
