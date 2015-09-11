@@ -73,7 +73,7 @@ This module attempts the following strategies for resolving an application path:
 
 	the application root is `/foo/bar/app/root`.
 
-*	When an alternative dependency strategy is used, e.g., copy and paste or this module as a `git` submodule, where this module is not located in a `node_modules` directory, the module also attempts to find the nearest `package.json` walking up from the [current working directory](https://github.com/kgryte/utils-cwd). For example, given the following directory structure,
+*	When an alternative dependency strategy is used, e.g., copy and paste or `git` submodule, where this module is not located in a `node_modules` directory, the module also attempts to find the nearest `package.json` walking up from the [current working directory](https://github.com/kgryte/utils-cwd). For example, given the following directory structure,
 
 	```
 	/
@@ -89,7 +89,7 @@ This module attempts the following strategies for resolving an application path:
 
 	the application root is `/foo/bar/app/root`.
 
-*	When none of the above methods resolve a root directory, the module uses `require.main.filename` as a fallback. For example, given the following directory structure,
+*	When none of the above methods resolve a root directory, the module uses [`require.main.filename`](https://nodejs.org/api/modules.html#modules_accessing_the_main_module) as a fallback. For example, given the following directory structure,
 
 	``` bash
 	/
