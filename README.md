@@ -46,34 +46,34 @@ This module attempts the following strategies for resolving an application path:
 
 	the application root is `/foo/bar`.
 
-* 	When this module is loaded from a [global Node path](https://github.com/kgryte/node-global-paths) (e.g., globally installed task runner like [`mocha`](http://mochajs.org/)), the module tries to find the nearest `package.json` walking up from the current working directory. For example, given the following directory structure
+* 	When this module is loaded from a [global Node path](https://github.com/kgryte/node-global-paths), the module tries to find the nearest `package.json` walking up from the [current working directory](https://github.com/kgryte/utils-cwd). For example, given the following directory structure
 
 	```
 	/
 	└── Users
 	    └── <user>
 	        └── .node_modules
-	            └── .bin
-	                └── mocha
+	            └── resolve-app-root
+	                └── index.js
 	└── foo
 	    └── bar
 	        └── app
 	            └── root
 	                └── package.json
-	                └── test
-	                    └── index.js
+	                └── bin
+	                    └── cli
 	```
 
 	and
 
 	``` bash
-	$ cd /foo/bar/app/root/test
-	$ mocha ./index.js
+	$ cd /foo/bar/app/root
+	$ node ./bin/cli
 	```
 
-	the application root is `/foo/bar/app/root`, assuming that the application root contains a `package.json`.
+	the application root is `/foo/bar/app/root`.
 
-*	When an alternative dependency strategy is used, e.g., copy and paste or this module as a `git` submodule, where this module is not located in a `node_modules` directory, the module also attempts to find the nearest `package.json` walking up from the current working directory. For example, given the following directory structure,
+*	When an alternative dependency strategy is used, e.g., copy and paste or this module as a `git` submodule, where this module is not located in a `node_modules` directory, the module also attempts to find the nearest `package.json` walking up from the [current working directory](https://github.com/kgryte/utils-cwd). For example, given the following directory structure,
 
 	```
 	/
@@ -87,7 +87,7 @@ This module attempts the following strategies for resolving an application path:
 	                        └── index.js
 	```
 
-	the application root is `/foo/bar/app/root`, assuming that the application root contains a `package.json`.
+	the application root is `/foo/bar/app/root`.
 
 *	When none of the above methods resolve a root directory, the module uses `require.main.filename` as a fallback. For example, given the following directory structure,
 
