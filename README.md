@@ -46,14 +46,32 @@ This module attempts the following strategies for resolving an application path:
 
 	the application root is `/foo/bar`.
 
-* 	When this module is loaded from a [global Node path](https://github.com/kgryte/node-global-paths) (e.g., global installed task runner like [`mocha`](http://mochajs.org/)), the module tries to find the nearest `package.json` walking up from the current working directory. For example, assuming a globally installed [`mocha`](http://mochajs.org/),
+* 	When this module is loaded from a [global Node path](https://github.com/kgryte/node-global-paths) (e.g., globally installed task runner like [`mocha`](http://mochajs.org/)), the module tries to find the nearest `package.json` walking up from the current working directory. For example, given the following directory structure
+
+	```
+	/
+	└── Users
+	    └── <user>
+	        └── .node_modules
+	            └── .bin
+	                └── mocha
+	└── foo
+	    └── bar
+	        └── app
+	            └── root
+	                └── package.json
+	                └── test
+	                    └── index.js
+	```
+
+	and
 
 	``` bash
-	$ cd path/to/app/root/test
+	$ cd /foo/bar/app/root/test
 	$ mocha ./index.js
 	```
 
-	the application root is `/path/to/app/root`, assuming that the application root contains a `package.json`.
+	the application root is `/foo/bar/app/root`, assuming that the application root contains a `package.json`.
 
 *	When an alternative dependency strategy is used, e.g., copy and paste or this module as a `git` submodule, where this module is not located in a `node_modules` directory, the module also attempts to find the nearest `package.json` walking up from the current working directory. For example, given the following directory structure,
 
@@ -63,6 +81,7 @@ This module attempts the following strategies for resolving an application path:
 	    └── bar
 	        └── app
 	            └── root
+	                └── package.json
 	                └── libs
 	                    └── resolve-app-root
 	                        └── index.js
