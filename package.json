@@ -40,7 +40,8 @@
   },
   "dependencies": {
     "node-global-paths": "^1.0.0",
-    "utils-cwd": "^2.0.0"
+    "utils-cwd": "^2.0.0",
+    "utils-fs-exists": "^1.0.0"
   },
   "devDependencies": {
     "chai": "3.x.x",
