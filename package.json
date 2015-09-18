@@ -1,6 +1,6 @@
 {
   "name": "resolve-app-path",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Resolves an application's path.",
   "author": {
     "name": "Athan Reines",
